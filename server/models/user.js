@@ -1,40 +1,16 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, { INTEGER, STRING }) => {
     const User = sequelize.define('User', {
         id: {
             autoIncrement: true,
             primaryKey: true,
-            type: sequelize.INTEGER
-        },
-        firstname: {
-            type: sequelize.STRING,
-            notEmpty: true
-        },
-
-        lastname: {
-            type: sequelize.STRING,
-            notEmpty: true
-        },
-        username: {
-            type: sequelize.TEXT,
-            allowNull: false
+            type: INTEGER
         },
         email: {
-            type: sequelize.STRING,
-            validate: {
-                isEmail: true
-            },
-            unique: true,
-            allowNull: false
+            type: STRING,
+            unique: true
         },
-        password: {
-            type: sequelize.STRING,
-            allowNull: false
-        },
+        password: STRING
     }, {});
-
-    User.associate = models => {
-        // associations can be defined here
-    };
 
     return User;
 };
